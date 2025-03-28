@@ -14,7 +14,8 @@ import UpdateBook from "./pages/UpdateBook";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./Context/AuthContext"; // Ensure correct path
-export const backend_url = "http://localhost:5000";
+export const backend_url =
+  "https://library-management-ajackus-backend.onrender.com";
 const ProtectedRoute = ({ children }) => {
   const { librarian } = useContext(AuthContext);
   return librarian ? children : <Navigate to="/login" />;

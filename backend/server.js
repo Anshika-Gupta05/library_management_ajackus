@@ -11,7 +11,9 @@ const app = express();
 connectDB();
 
 // CORS Configuration
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [
+  "https://library-management-ajackus-frontend.vercel.app",
+];
 app.use(
   cors({
     origin: (origin, callback) => {
