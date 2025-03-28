@@ -47,7 +47,7 @@ export default function BookForm({ bookData }) {
         name="bookId"
         value={book.bookId}
         onChange={handleChange}
-        className="border p-2 w-full mb-2"
+        className="border border-cyan-950 p-2 w-full mb-2"
         placeholder="Book ID"
         required
       />
@@ -56,7 +56,7 @@ export default function BookForm({ bookData }) {
         name="title"
         value={book.title}
         onChange={handleChange}
-        className="border p-2 w-full mb-2"
+        className="border border-cyan-950 p-2 w-full mb-2"
         placeholder="Title"
         required
       />
@@ -65,7 +65,7 @@ export default function BookForm({ bookData }) {
         name="author"
         value={book.author}
         onChange={handleChange}
-        className="border p-2 w-full mb-2"
+        className="border border-cyan-950 p-2 w-full mb-2"
         placeholder="Author"
         required
       />
@@ -74,14 +74,14 @@ export default function BookForm({ bookData }) {
         name="genre"
         value={book.genre}
         onChange={handleChange}
-        className="border p-2 w-full mb-2"
+        className="border border-cyan-950 p-2 w-full mb-2"
         placeholder="Genre"
       />
       <select
         name="availabilityStatus"
         value={book.availabilityStatus}
         onChange={handleChange}
-        className="border p-2 w-full mb-2"
+        className="border border-cyan-950 p-2 w-full mb-2"
       >
         <option value="Available">Available</option>
         <option value="Checked Out">Checked Out</option>

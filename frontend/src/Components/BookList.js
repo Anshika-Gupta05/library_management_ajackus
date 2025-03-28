@@ -10,6 +10,7 @@ import { backend_url } from "../App";
 export default function BookList({ searchQuery, showAll }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const deleteBook = async (id) => {
     try {
       await axios.delete(`${backend_url}/books/delete/${id}`);
@@ -18,6 +19,7 @@ export default function BookList({ searchQuery, showAll }) {
       console.error("Error deleting book", error);
     }
   };
+
   useEffect(() => {
     fetchBooks();
   }, [searchQuery, showAll]);
@@ -43,68 +45,79 @@ export default function BookList({ searchQuery, showAll }) {
         <p>Loading...</p>
       ) : books.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-cyan-900">
+          <table className="w-full border-collapse border border-cyan-900 text-sm md:text-base">
             <thead>
-              <tr className="bg-cyan-950">
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+              <tr className="bg-cyan-950 text-xs md:text-sm">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Book ID
                 </th>
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Title
                 </th>
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Author
                 </th>
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Genre
                 </th>
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Availability
                 </th>
-                <th className="border border-cyan-900 text-gray-50 px-4 py-2">
+                <th className="border border-cyan-900 text-gray-50 px-2 md:px-4 py-1 md:py-2">
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody>
               {books.map((book) => (
-                <tr key={book.bookId} className="text-center">
-                  <td className="border border-cyan-900 px-4 py-2">
+                <tr
+                  key={book.bookId}
+                  className="text-center text-xs md:text-sm"
+                >
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
                     {book.bookId}
                   </td>
-                  <td className="border border-cyan-900 px-4 py-2">
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
                     {book.title}
                   </td>
-                  <td className="border border-cyan-900 px-4 py-2">
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
                     {book.author}
                   </td>
-                  <td className="border border-cyan-900 px-4 py-2">
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
                     {book.genre}
                   </td>
-                  <td className="border border-cyan-900 px-4 py-2 ">
-                    <div className="flex items-center justify-evenly gap-2">
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
+                    <div className="flex items-center justify-center">
                       {book.availabilityStatus === "Available" ? (
-                        <>
-                          <img src={available} alt="Available" />
-                        </>
+                        <img
+                          src={available}
+                          alt="Available"
+                          className="w-4 h-4 md:w-6 md:h-6"
+                        />
                       ) : (
-                        <>
-                          <img src={checked_out} alt="Checked Out" />
-                        </>
+                        <img
+                          src={checked_out}
+                          alt="Checked Out"
+                          className="w-4 h-4 md:w-6 md:h-6"
+                        />
                       )}
                     </div>
                   </td>
-
-                  <td className="border border-cyan-900 px-4 py-2">
+                  <td className="border border-cyan-900 px-2 md:px-4 py-1 md:py-2">
                     <div className="flex items-center justify-evenly">
                       <Link to={`/update/${book.bookId}`}>
-                        <img src={edit} alt="Edit Book" />
+                        <img
+                          src={edit}
+                          alt="Edit Book"
+                          className="w-4 h-4 md:w-6 md:h-6"
+                        />
                       </Link>
-                      <button
-                        onClick={() => deleteBook(book.bookId)}
-                        className="text-red-500"
-                      >
-                        <img src={del} alt="Delete Book" />
+                      <button onClick={() => deleteBook(book.bookId)}>
+                        <img
+                          src={del}
+                          alt="Delete Book"
+                          className="w-4 h-4 md:w-6 md:h-6"
+                        />
                       </button>
                     </div>
                   </td>

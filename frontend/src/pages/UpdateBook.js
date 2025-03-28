@@ -16,7 +16,7 @@ export default function UpdateBook() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold p-5">Update Book</h2>
+      <h2 className="text-2xl text-cyan-950 font-bold p-5">Update Book</h2>
       {book && <BookForm bookData={book} />}
     </div>
   );
